@@ -1,18 +1,38 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useCallback } from 'react';
 import '../styles/cursor.css';
 
-const CustomCursor = () => {
+const CustomCursor = React.memo(() => {
   const cursorRef = useRef(null);
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [isHoveringInteractive, setIsHoveringInteractive] = useState(false);
+  const animationFrameRef = useRef(null);
+
+  const updateCursorPosition = useCallback((x, y) => {
+    if (cursorRef.current) {
+      cursorRef.current.style.transform = `translate(${x - 6}px, ${y - 6}px)`;
+    }
+  }, []);
 
   useEffect(() => {
-    const handleMouseMove = (e) => {
-      setMousePos({ x: e.clientX, y: e.clientY });
+    let mouseX = 0;
+    let mouseY = 0;
+    let cursorX = 0;
+    let cursorY = 0;
 
-      if (cursorRef.current) {
-        cursorRef.current.style.left = `${e.clientX}px`;
-        cursorRef.current.style.top = `${e.clientY}px`;
+    const animateCursor = () => {
+      // Smooth interpolation for cursor following
+      cursorX += (mouseX - cursorX) * 0.15;
+      cursorY += (mouseY - cursorY) * 0.15;
+
+      updateCursorPosition(cursorX, cursorY);
+      animationFrameRef.current = requestAnimationFrame(animateCursor);
+    };
+
+    const handleMouseMove = (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+
+      if (!animationFrameRef.current) {
+        animationFrameRef.current = requestAnimationFrame(animateCursor);
       }
     };
 
@@ -32,9 +52,9 @@ const CustomCursor = () => {
     };
 
     // Add event listeners
-    document.addEventListener('mousemove', handleMouseMove, false);
-    document.addEventListener('mouseenter', handleMouseEnter, true);
-    document.addEventListener('mouseleave', handleMouseLeave, true);
+    document.addEventListener('mousemove', handleMouseMove, { passive: true });
+    document.addEventListener('mouseenter', handleMouseEnter, { passive: true, capture: true });
+    document.addEventListener('mouseleave', handleMouseLeave, { passive: true, capture: true });
 
     // Hide default cursor
     document.body.style.cursor = 'none';
@@ -44,8 +64,11 @@ const CustomCursor = () => {
       document.removeEventListener('mouseenter', handleMouseEnter, true);
       document.removeEventListener('mouseleave', handleMouseLeave, true);
       document.body.style.cursor = 'auto';
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
+      }
     };
-  }, []);
+  }, [updateCursorPosition]);
 
   return (
     <div
@@ -53,6 +76,8 @@ const CustomCursor = () => {
       className={`custom-cursor ${isHoveringInteractive ? 'active' : ''}`}
     />
   );
-};
+});
+
+CustomCursor.displayName = 'CustomCursor';
 
 export default CustomCursor;

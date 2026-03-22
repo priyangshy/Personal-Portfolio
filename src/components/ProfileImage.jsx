@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import '../styles/profile.css';
 
-const ProfileImage = ({ src, alt = 'Profile' }) => {
+const ProfileImage = React.memo(({ src, alt = 'Profile' }) => {
   return (
     <motion.div 
       className="relative h-96 sm:h-[500px] lg:h-full"
@@ -25,6 +25,8 @@ const ProfileImage = ({ src, alt = 'Profile' }) => {
       </div>
     </motion.div>
   );
-};
+});
+
+ProfileImage.displayName = 'ProfileImage';
 
 export default ProfileImage;

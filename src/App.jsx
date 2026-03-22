@@ -135,6 +135,16 @@ export default function App() {
   const [titleTyping, setTitleTyping] = useState('');
   const [formStatus, setFormStatus] = useState({ type: '', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    setPrefersReducedMotion(mediaQuery.matches);
+    
+    const handleChange = (e) => setPrefersReducedMotion(e.matches);
+    mediaQuery.addEventListener('change', handleChange);
+    return () => mediaQuery.removeEventListener('change', handleChange);
+  }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 1000);
@@ -161,35 +171,30 @@ export default function App() {
     return () => clearInterval(typeInterval);
   }, []);
 
-  // Scroll progress tracking
+  // Scroll progress tracking with throttling
   useEffect(() => {
+    let ticking = false;
+
     const handleScroll = () => {
-      const scrolled = window.scrollY;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const progress = (scrolled / docHeight) * 100;
-      setScrollProgress(progress);
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const scrolled = window.scrollY;
+          const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+          const progress = (scrolled / docHeight) * 100;
+          setScrollProgress(progress);
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   // Cursor dot
   useEffect(() => {
-    const cursor = document.createElement('div');
-    cursor.className = 'cursor-dot';
-    document.body.appendChild(cursor);
-
-    const onMouseMove = (e) => {
-      cursor.style.left = `${e.clientX}px`;
-      cursor.style.top = `${e.clientY}px`;
-    };
-
-    window.addEventListener('mousemove', onMouseMove);
-    return () => {
-      window.removeEventListener('mousemove', onMouseMove);
-      cursor.remove();
-    };
+    // Removed duplicate cursor implementation - using CustomCursor component instead
   }, []);
 
   const handleSubmit = (event) => {
@@ -267,22 +272,10 @@ export default function App() {
       {/* Loading Screen */}
       {loading && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#0B0F19]">
-          <motion.div
-            animate={{ scale: [1, 1.2, 1], opacity: [0.5, 1, 0.5] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="relative w-16 h-16"
-          >
-            <motion.div
-              className="absolute inset-0 rounded-full border-2 border-transparent border-t-[#6366F1] border-r-[#22C55E]"
-              animate={{ rotate: 360 }}
-              transition={{ duration: 1.5, repeat: Infinity, ease: 'linear' }}
-            />
-            <motion.div
-              className="absolute inset-2 rounded-full border-2 border-transparent border-b-[#6366F1] border-l-[#22C55E]"
-              animate={{ rotate: -360 }}
-              transition={{ duration: 2, repeat: Infinity, ease: 'linear' }}
-            />
-          </motion.div>
+          <div className="relative w-16 h-16">
+            <div className="absolute inset-0 rounded-full border-2 border-transparent border-t-[#6366F1] border-r-[#22C55E] animate-spin" />
+            <div className="absolute inset-2 rounded-full border-2 border-transparent border-b-[#6366F1] border-l-[#22C55E] animate-spin animation-reverse" />
+          </div>
         </div>
       )}
 
@@ -311,12 +304,7 @@ export default function App() {
                 className="relative px-4 py-2 text-sm font-medium text-[#E5E7EB] cursor-pointer group"
               >
                 {section}
-                <motion.div
-                  className="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-[#6366F1] to-[#22C55E]"
-                  initial={{ width: 0 }}
-                  whileHover={{ width: '100%' }}
-                  transition={{ duration: 0.3 }}
-                />
+                <span className="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-[#6366F1] to-[#22C55E] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
               </ScrollLink>
             ))}
           </div>
@@ -612,7 +600,7 @@ export default function App() {
                   x: {
                     repeat: Infinity,
                     repeatType: 'loop',
-                    duration: 20,
+                    duration: 30,
                     ease: 'linear',
                   },
                 }}
@@ -636,7 +624,7 @@ export default function App() {
                   x: {
                     repeat: Infinity,
                     repeatType: 'loop',
-                    duration: 20,
+                    duration: 30,
                     ease: 'linear',
                   },
                 }}
