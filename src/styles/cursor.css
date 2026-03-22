@@ -1,0 +1,47 @@
+/* Custom Cursor Styles */
+.custom-cursor {
+  position: fixed;
+  width: 12px;
+  height: 12px;
+  background: radial-gradient(circle, #22C55E 0%, #16A34A 100%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 20px rgba(34, 197, 94, 0.6),
+              inset 0 0 10px rgba(255, 255, 255, 0.3);
+  transition: all 0.15s cubic-bezier(0.23, 1, 0.320, 1);
+  will-change: transform;
+}
+
+/* Scale up when hovering over interactive elements */
+.custom-cursor.active {
+  width: 20px;
+  height: 20px;
+  background: radial-gradient(circle, #38bdf8 0%, #0369A1 100%);
+  box-shadow: 0 0 30px rgba(56, 189, 248, 0.8),
+              inset 0 0 15px rgba(255, 255, 255, 0.4);
+}
+
+/* Fallback for browsers that support cursor */
+@supports (cursor: none) {
+  html {
+    cursor: none;
+  }
+}
+
+/* Smooth cursor movement for high-refresh displays */
+@media (prefers-reduced-motion: no-preference) {
+  .custom-cursor {
+    transition: all 0.1s linear;
+  }
+}
+
+/* Ensure cursor is visible on interactive elements */
+a:hover,
+button:hover,
+input:focus,
+textarea:focus,
+[role="button"]:hover {
+  cursor: none;
+}
