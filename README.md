@@ -1,29 +1,29 @@
-# 🌐 Priyangshu Nath Laskar - Developer Portfolio
+#  Priyangshu Nath Laskar - Developer Portfolio
 
 A modern, fully responsive personal portfolio website showcasing my projects, skills, and experience as a Full Stack Developer
 
 ---
 
-## 📌 About the Project
+##  About the Project
 
 This is my personal developer portfolio built to present my work, technical skills, and achievements in a clean and interactive way.
 It includes smooth animations, modern UI design, and a fully responsive layout for all devices.
 
 ---
 
-## ✨ Features
+##  Features
 
-* 🎨 Modern UI with dark theme and gradient design
-* ⚡ Smooth animations using Framer Motion
-* 🧑‍💻 Project showcase with live demo & GitHub links
-* 🛠️ Skills section with tech stack highlights
-* 📈 Experience & achievements timeline
-* 📬 Functional contact form
-* 📱 Fully responsive (mobile + tablet + desktop)
+*  Modern UI with dark theme and gradient design
+*  Smooth animations using Framer Motion
+*  Project showcase with live demo & GitHub links
+*  Skills section with tech stack highlights
+*  Experience & achievements timeline
+*  Functional contact form
+*  Fully responsive (mobile + tablet + desktop)
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 * **Frontend:** React.js, Tailwind CSS
 * **Animations:** Framer Motion
