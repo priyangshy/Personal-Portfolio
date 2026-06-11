@@ -59,7 +59,7 @@ Include screenshots of the site in the `public/` folder and link them here once 
 
 ## 🌐 Live Demo
 
-Add your deployed URL here when the portfolio is published.
+.
 
 ## 👤 Author
 
