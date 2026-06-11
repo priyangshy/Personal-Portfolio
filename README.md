@@ -53,13 +53,6 @@ npm run build
 - Add hooks to `src/hooks/` for future accessibility enhancements
 - Update global styling in `src/index.css`
 
-## 🖼 Screenshots
-
-Include screenshots of the site in the `public/` folder and link them here once available.
-
-## 🌐 Live Demo
-
-.
 
 ## 👤 Author
 
