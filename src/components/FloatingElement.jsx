@@ -1,13 +1,5 @@
-import React from 'react'; 
-import { motion } from 'framer-motion';
-import profile from '../assets/profile.jpg';
-const FloatingElement = () => {
-  return (
-    <div className="profile-container">
-    <img src={profile} alt="profile"
-    className="profile-image"/>
-  </div>
-  );
-};
+import React from 'react';
 
-export default FloatingElement;
+export default function FloatingElement() {
+  return null;
+}

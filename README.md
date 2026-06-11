@@ -1,22 +1,21 @@
 # Personal Portfolio
 
-A responsive and polished personal portfolio website built with React, Vite, Tailwind CSS, and Framer Motion. This project highlights projects, skills, experience, and contact details in a modern, recruiter-friendly layout.
+A responsive and polished personal portfolio website built with React, Vite, Tailwind CSS, and Framer Motion. This project highlights projects, skills, experience, and contact details in a clean, recruiter-friendly layout.
 
 ## Overview
 
 This repository contains a fully responsive developer portfolio designed for clean presentation and easy customization. It includes project showcases, a skills section, experience highlights, and a contact form.
 
-## Features
+## 🚀 Features
 
-- Responsive dark-themed portfolio layout
-- Animated hero section with profile image and custom cursor
-- Featured projects with demo and GitHub links
-- Skills section with an animated tech carousel
-- Experience timeline and achievement highlights
-- Contact form integration with EmailJS
-- Smooth scrolling and polished motion effects
+- Responsive portfolio layout with smooth animations
+- Hero section with animated profile presentation
+- Featured projects section with demo and GitHub links
+- Skills carousel and interactive experience timeline
+- Contact form integrated with EmailJS
+- Custom cursor and polished dark visual design
 
-## Tech Stack
+## 💻 Tech Stack
 
 - React 18
 - Vite
@@ -25,69 +24,47 @@ This repository contains a fully responsive developer portfolio designed for cle
 - EmailJS
 - React Icons
 
-## Installation
-
-1. Clone the repository:
+## 📦 Installation
 
 ```bash
 git clone https://github.com/priyangshy/Personal-Portfolio.git
 cd "Personal Portfolio"
-```
-
-2. Install dependencies:
-
-```bash
 npm install
 ```
 
-3. Run locally:
+## ▶️ Run Locally
 
 ```bash
 npm run dev
 ```
 
-4. Build for production:
+Open the local URL shown in the terminal to preview the portfolio.
+
+## 📦 Production Build
 
 ```bash
 npm run build
 ```
 
-## Project Structure
+## ✍️ Customization
 
-```bash
-personal-portfolio/
-├── public/
-│   ├── profile.jpg
-│   ├── resume.pdf
-│   └── index.html
-├── src/
-│   ├── components/
-│   ├── hooks/
-│   ├── pages/
-│   ├── styles/
-│   ├── utils/
-│   ├── App.jsx
-│   └── main.jsx
-├── .gitignore
-├── package.json
-├── postcss.config.js
-├── tailwind.config.js
-└── vite.config.js
-```
+- Update page content and portfolio items in `src/pages/Home.jsx`
+- Add reusable data in `src/utils/siteData.js`
+- Add hooks to `src/hooks/` for future accessibility enhancements
+- Update global styling in `src/index.css`
 
-## Customization
+## 🖼 Screenshots
 
-- Update page content in `src/pages/Home.jsx`
-- Manage project and skills data in `src/utils/siteData.js`
-- Add new components under `src/components/`
-- Extend styles in `src/index.css`
+Include screenshots of the site in the `public/` folder and link them here once available.
 
-## Contact
+## 🌐 Live Demo
 
-- Email: priyangshu.codec@gmail.com
-- LinkedIn: https://www.linkedin.com/in/priyangshu-nath-laskar-3baa55266
-- GitHub: https://github.com/priyangshy
+Add your deployed URL here when the portfolio is published.
 
-## License
+## 👤 Author
 
-This repository is intended for portfolio and demo use. Add a license if you plan to publish it as open source.
+Priyangshu Nath Laskar
+
+## 📄 License
+
+This project is available for portfolio and demo purposes. Add a license if you plan to publish it as open source.
