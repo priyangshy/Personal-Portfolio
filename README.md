@@ -1,75 +1,93 @@
-#  Priyangshu Nath Laskar - Developer Portfolio
+# Personal Portfolio
 
-A modern, fully responsive personal portfolio website showcasing my projects, skills, and experience as a Full Stack Developer
+A responsive and polished personal portfolio website built with React, Vite, Tailwind CSS, and Framer Motion. This project highlights projects, skills, experience, and contact details in a modern, recruiter-friendly layout.
 
----
+## Overview
 
-##  About the Project
+This repository contains a fully responsive developer portfolio designed for clean presentation and easy customization. It includes project showcases, a skills section, experience highlights, and a contact form.
 
-This is my personal developer portfolio built to present my work, technical skills, and achievements in a clean and interactive way.
-It includes smooth animations, modern UI design, and a fully responsive layout for all devices.
+## Features
 
----
+- Responsive dark-themed portfolio layout
+- Animated hero section with profile image and custom cursor
+- Featured projects with demo and GitHub links
+- Skills section with an animated tech carousel
+- Experience timeline and achievement highlights
+- Contact form integration with EmailJS
+- Smooth scrolling and polished motion effects
 
-##  Features
+## Tech Stack
 
-*  Modern UI with dark theme and gradient design
-*  Smooth animations using Framer Motion
-*  Project showcase with live demo & GitHub links
-*  Skills section with tech stack highlights
-*  Experience & achievements timeline
-*  Functional contact form
-*  Fully responsive (mobile + tablet + desktop)
+- React 18
+- Vite
+- Tailwind CSS
+- Framer Motion
+- EmailJS
+- React Icons
 
----
+## Installation
 
-##  Tech Stack
-
-* **Frontend:** React.js, Tailwind CSS
-* **Animations:** Framer Motion
-* **Build Tool:** Vite
-* **Deployment:** GitHub Pages
-
----
-
-## 📂 Project Structure
-
-```
-portfolio/
-│── public/
-│── src/
-│   ├── components/
-│   ├── sections/
-│   ├── assets/
-│   ├── App.jsx
-│   └── main.jsx
-│── index.html
-│── package.json
-```
-
----
-
-## ⚙️ Installation & Setup
-
-To run this project locally:
+1. Clone the repository:
 
 ```bash
-git clone https://github.com/your-username/your-repo-name.git
-cd your-repo-name
+git clone https://github.com/priyangshy/Personal-Portfolio.git
+cd "Personal Portfolio"
+```
+
+2. Install dependencies:
+
+```bash
 npm install
+```
+
+3. Run locally:
+
+```bash
 npm run dev
 ```
 
----
+4. Build for production:
 
-## 📬 Contact
+```bash
+npm run build
+```
 
-* 📧 Email:priyangshu.codec@gmail.com
-* 💼 LinkedIn:www.linkedin.com/in/priyangshu-nath-laskar-3baa55266
-* 💻 GitHub: https://github.com/priyangshy
+## Project Structure
 
----
+```bash
+personal-portfolio/
+├── public/
+│   ├── profile.jpg
+│   ├── resume.pdf
+│   └── index.html
+├── src/
+│   ├── components/
+│   ├── hooks/
+│   ├── pages/
+│   ├── styles/
+│   ├── utils/
+│   ├── App.jsx
+│   └── main.jsx
+├── .gitignore
+├── package.json
+├── postcss.config.js
+├── tailwind.config.js
+└── vite.config.js
+```
 
-## ⭐ Show Your Support
+## Customization
 
-If you like this project, consider giving it a ⭐ on GitHub!
+- Update page content in `src/pages/Home.jsx`
+- Manage project and skills data in `src/utils/siteData.js`
+- Add new components under `src/components/`
+- Extend styles in `src/index.css`
+
+## Contact
+
+- Email: priyangshu.codec@gmail.com
+- LinkedIn: https://www.linkedin.com/in/priyangshu-nath-laskar-3baa55266
+- GitHub: https://github.com/priyangshy
+
+## License
+
+This repository is intended for portfolio and demo use. Add a license if you plan to publish it as open source.
